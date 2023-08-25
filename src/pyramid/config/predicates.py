@@ -1,4 +1,4 @@
-from hashlib import md5
+from hashlib import sha256 as md5
 from webob.acceptparse import Accept
 
 from pyramid.compat import bytes_, is_nonstr_iter

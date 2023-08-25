@@ -1542,12 +1542,12 @@ class TestBadTicket(unittest.TestCase):
 
 
 class Test_parse_ticket(unittest.TestCase):
-    def _callFUT(self, secret, ticket, ip, hashalg='md5'):
+    def _callFUT(self, secret, ticket, ip, hashalg='sha256'):
         from pyramid.authentication import parse_ticket
 
         return parse_ticket(secret, ticket, ip, hashalg)
 
-    def _assertRaisesBadTicket(self, secret, ticket, ip, hashalg='md5'):
+    def _assertRaisesBadTicket(self, secret, ticket, ip, hashalg='sha256'):
         from pyramid.authentication import BadTicket
 
         self.assertRaises(
@@ -1977,7 +1977,7 @@ class DummyAuthTktModule(object):
         tokens=(),
         user_data='',
         parse_raise=False,
-        hashalg="md5",
+        hashalg="sha256",
     ):
         self.timestamp = timestamp
         self.userid = userid

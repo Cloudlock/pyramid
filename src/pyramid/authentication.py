@@ -700,7 +700,7 @@ class AuthTicket(object):
         time=None,
         cookie_name='auth_tkt',
         secure=False,
-        hashalg='md5',
+        hashalg='sha256',
     ):
         self.secret = secret
         self.userid = userid
@@ -796,7 +796,7 @@ def parse_ticket(secret, ticket, ip, hashalg='md5'):
 
 # this function licensed under the MIT license (stolen from Paste)
 def calculate_digest(
-    ip, timestamp, secret, userid, tokens, user_data, hashalg='md5'
+    ip, timestamp, secret, userid, tokens, user_data, hashalg='sha256'
 ):
     secret = bytes_(secret, 'utf-8')
     userid = bytes_(userid, 'utf-8')
@@ -874,7 +874,7 @@ class AuthTktCookieHelper(object):
         http_only=False,
         path="/",
         wild_domain=True,
-        hashalg='md5',
+        hashalg='sha256',
         parent_domain=False,
         domain=None,
         samesite='Lax',
